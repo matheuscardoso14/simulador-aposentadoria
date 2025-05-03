@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import extraInputsOpen from "./reducers/extraInputsOpen.js";
+import extraInputsOpenSlice from "./reducers/extraInputsOpen.js";
+import extraInputsSlice from "./reducers/extraInputs.js";
 
 const store = configureStore({
   reducer: {
-    extraInputsOpen
+    extraInputsOpen: extraInputsOpenSlice,
+    extraInputs: extraInputsSlice
   }
 })
 

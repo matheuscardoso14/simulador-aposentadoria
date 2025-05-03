@@ -1,11 +1,13 @@
 import styles from "./App.module.scss"
 import FormServidor from "./components/FormServidor"
-import Header from "./components/Header"
+import Title from "./components/Title"
 
 function App() {
   return (
     <div className={styles.App}>
-      <Header />
+      <header>
+        <Title type="h1">Simulador de aposentadoria</Title>
+      </header>
       <section>
         <FormServidor />
       </section>

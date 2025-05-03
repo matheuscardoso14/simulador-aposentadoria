@@ -1,6 +1,6 @@
 @use "../../variables" as *;
 
-.input-container {
+.select-container {
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
@@ -11,7 +11,7 @@
     font-size: 1.2rem;
     color: $white;
   }
-  & > input {
+  & > select {
     padding: 0.6rem 1rem;
     border: 1px solid $black;
     border-radius: 1rem;
@@ -19,6 +19,12 @@
     font-size: 1rem;
     background-color: $white;
     outline: none;
+    appearance: none;
+    background-image: url("/arrow-dropdown.svg");
+    background-size: 4rem;
+    background-repeat: no-repeat;
+    background-position: 101.5% center;
+    cursor: pointer;
     &:focus {
       border: 2px solid $blue-1;
     }

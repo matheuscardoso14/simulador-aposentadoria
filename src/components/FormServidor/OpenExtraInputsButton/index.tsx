@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import Button, { ButtonProps } from "../Button";
+import Button from "../../Button";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { RootState } from "../../store";
-import { setExtraInputsOpen } from "../../store/reducers/extraInputsOpen.js";
+import { RootState } from "../../../store";
+import { setExtraInputsOpen } from "../../../store/reducers/extraInputsOpen.js";
 import { Dispatch } from "@reduxjs/toolkit";
 
 const iconProps = {
@@ -10,12 +10,12 @@ const iconProps = {
   color: "#ffffff",
 }
 
-function OpenExtraInputsButton({ children, type = "button", disabled = false }: ButtonProps) {
+function OpenExtraInputsButton({ children }: { children: string }) {
   const dispatch: Dispatch = useDispatch();
   const extraInputsOpen: boolean = useSelector((state: RootState): boolean => state.extraInputsOpen);
 
   return (
-    <Button onClick={() => dispatch(setExtraInputsOpen(!extraInputsOpen))} type={type} disabled={disabled}>
+    <Button onClick={() => dispatch(setExtraInputsOpen(!extraInputsOpen))}>
       <span>{children}</span>
       {extraInputsOpen
         ? <IoIosArrowDown {...iconProps} />

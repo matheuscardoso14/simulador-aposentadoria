@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import styles from "./Button.module.scss";
 
-export interface ButtonProps {
+interface ButtonProps {
   children: string | ReactNode;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";

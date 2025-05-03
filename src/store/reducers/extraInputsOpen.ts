@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const extraInputsOpen = createSlice({
+const extraInputsOpenSlice = createSlice({
   name: "extraInputsOpen",
   initialState: false,
   reducers: {
@@ -10,6 +10,6 @@ const extraInputsOpen = createSlice({
   }
 })
 
-export const { setExtraInputsOpen } = extraInputsOpen.actions;
+export const { setExtraInputsOpen } = extraInputsOpenSlice.actions;
 
-export default extraInputsOpen.reducer;
+export default extraInputsOpenSlice.reducer;
