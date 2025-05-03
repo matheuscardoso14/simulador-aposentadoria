@@ -1,0 +1,32 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 32rem;
+  margin: 0 auto;
+  margin-top: 3rem;
+  button {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+  }
+  .extra-inputs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+    margin-bottom: 3rem;
+    .extra-input-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      & > div {
+        display: flex;
+        justify-content: space-between;
+        gap: 5rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+@use "../../variables" as *;
+
+.button {
+  background-color: $blue-3;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.7rem 1.2rem;
+  font-family: $font-family;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+  &:hover {
+    background-color: #1b5b90;
+  }
+}

@@ -1,0 +1,26 @@
+@use "../../variables" as *;
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: 100%;
+  & > label {
+    font-family: $font-family;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: $white;
+  }
+  & > input {
+    padding: 0.6rem 1rem;
+    border: 1px solid $black;
+    border-radius: 1rem;
+    font-family: $font-family;
+    font-size: 1rem;
+    outline: none;
+    width: 100%;
+    &:focus {
+      border: 2px solid $blue-1;
+    }
+  }
+}
