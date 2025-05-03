@@ -6,13 +6,15 @@ export interface InputServidorProps {
   onChange: (value: string) => void;
   placeholder?: string;
   type?: string;
+  required?: boolean;
 }
 
-function InputServidor({ label, value, onChange, placeholder, type }: InputServidorProps) {
+function InputServidor({ label, value, onChange, placeholder, type, required }: InputServidorProps) {
+
   return (
     <div className={styles["input-container"]}>
       {label && <label>{label}</label>}
-      <input value={value} onChange={() => onChange} type={type} placeholder={placeholder} />
+      <input value={value} onChange={(event) => onChange(event.target.value)} type={type} placeholder={placeholder} required={required} />
     </div>
   )
 }

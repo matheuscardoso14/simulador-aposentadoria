@@ -6,11 +6,12 @@ interface ButtonProps {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
+  id?: string;
 }
 
-function Button({ children, onClick, type = "button", disabled = false }: ButtonProps) {
+function Button({ children, onClick, type = "button", disabled = false, id }: ButtonProps) {
   return (
-    <button className={styles.button} type={type} onClick={onClick} disabled={disabled}>
+    <button className={styles.button} id={id} type={type} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );

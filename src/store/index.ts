@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import extraInputsOpenSlice from "./reducers/extraInputsOpen.js";
-import extraInputsSlice from "./reducers/extraInputs.js";
+import extraInputsOpenSlice from "./reducers/extraInputsOpenSlice.js";
+import servidorDataSlice from "./reducers/servidorDataSlice.js";
+
 
 const store = configureStore({
   reducer: {
     extraInputsOpen: extraInputsOpenSlice,
-    extraInputs: extraInputsSlice
+    servidorData: servidorDataSlice,
   }
 })
 

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../../Button";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { RootState } from "../../../store";
-import { setExtraInputsOpen } from "../../../store/reducers/extraInputsOpen.js";
+import { setExtraInputsOpen } from "../../../store/reducers/extraInputsOpenSlice.js";
 import { Dispatch } from "@reduxjs/toolkit";
 
 const iconProps = {
