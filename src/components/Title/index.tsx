@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { memo, ReactNode } from "react";
 import styles from "./Title.module.scss";
 
 interface TitleProps {
@@ -16,4 +16,4 @@ function Title({ type, children }: TitleProps) {
   );
 }
 
-export default Title;
+export default memo(Title);

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { memo, ReactNode } from "react";
 import styles from "./Button.module.scss";
 
 interface ButtonProps {
@@ -17,4 +17,4 @@ function Button({ children, onClick, type = "button", disabled = false, id }: Bu
   );
 }
 
-export default Button;
+export default memo(Button);

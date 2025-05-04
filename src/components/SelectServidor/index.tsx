@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { capitalizeFirstLetter } from "../../utils";
 import styles from "./SelectServidor.module.scss";
 
@@ -21,4 +22,4 @@ function SelectServidor({ label, value, onChange, placeholder, options }: Select
   );
 }
 
-export default SelectServidor;
+export default memo(SelectServidor);

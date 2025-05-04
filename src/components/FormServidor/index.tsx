@@ -6,7 +6,7 @@ import { RootState } from "../../store";
 import AddExtraInputGroupButton from "./AddExtraInputGroupButton";
 import RemoveExtraInputGroupButton from "./RemoveExtraInputGroupButton";
 import SelectServidor from "../SelectServidor";
-import { clearServidorData, OrgaoAdicional, setOrgaoAdicional, setProperty } from "../../store/reducers/servidorDataSlice";
+import { OrgaoAdicional, setOrgaoAdicional, setProperty } from "../../store/reducers/servidorDataSlice";
 import Button from "../Button";
 import { calculateTempoContribuicao } from "../../store/listeners/makeTempoContribuicaoCalculation";
 import { FormEvent } from "react";
@@ -17,7 +17,7 @@ const generos: string[] = ["masculino", "feminino"];
 
 function FormServidor() {
   const dispatch = useDispatch();
-  
+
   const nomeServidor: string = useSelector((state: RootState): string => state.servidorData.nome);
   const dataNascimento: string = useSelector((state: RootState): string => state.servidorData.data_nascimento);
   const genero: string = useSelector((state: RootState): string => state.servidorData.genero);

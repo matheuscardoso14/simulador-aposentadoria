@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styles from "./InputServidor.module.scss";
 
 export interface InputServidorProps {
@@ -19,4 +20,4 @@ function InputServidor({ label, value, onChange, placeholder, type, required }: 
   );
 }
 
-export default InputServidor;
+export default memo(InputServidor);

@@ -3,7 +3,7 @@ import Button from "../../Button";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { RootState } from "../../../store";
 import { setExtraInputsOpen } from "../../../store/reducers/extraInputsOpenSlice.js";
-import { Dispatch } from "@reduxjs/toolkit";
+import { useMemo } from "react";
 
 const iconProps = {
   size: 20,
@@ -11,16 +11,17 @@ const iconProps = {
 };
 
 function OpenExtraInputsButton({ children }: { children: string }) {
-  const dispatch: Dispatch = useDispatch();
+  const dispatch = useDispatch();
   const extraInputsOpen: boolean = useSelector((state: RootState): boolean => state.extraInputsOpen);
+
+  const memoizedIcon = useMemo(() => {
+    return extraInputsOpen ? <IoIosArrowDown {...iconProps} /> : <IoIosArrowUp {...iconProps} />;
+  }, [extraInputsOpen]);
 
   return (
     <Button onClick={() => dispatch(setExtraInputsOpen(!extraInputsOpen))}>
       <span>{children}</span>
-      {extraInputsOpen
-        ? <IoIosArrowDown {...iconProps} />
-        : <IoIosArrowUp {...iconProps} />
-      }
+      {memoizedIcon}
     </Button>
   );
 }
