@@ -9,8 +9,8 @@ import { clearRetirementDate } from "../../store/reducers/retirementDate";
 function Result() {
   const dispatch = useDispatch();
 
-  const nomeServidor: string = useSelector((state: RootState): string => state.servidorData.nome);
-  const cargoServidor: string = useSelector((state: RootState): string => state.servidorData.cargo_ocupado);
+  const nomeServidor: string = useSelector((state: RootState): string => state.servidorData.nome.trim());
+  const cargoServidor: string = useSelector((state: RootState): string => state.servidorData.cargo_ocupado.trim());
   const dataAposentadoria: Date = useSelector((state: RootState): Date => new Date(state.retirementDate));
 
   function handleClick() {
