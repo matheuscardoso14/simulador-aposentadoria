@@ -8,7 +8,7 @@ const extraInputsOpenSlice = createSlice({
       return payload;
     }
   }
-})
+});
 
 export const { setExtraInputsOpen } = extraInputsOpenSlice.actions;
 

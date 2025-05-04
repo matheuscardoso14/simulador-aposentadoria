@@ -17,7 +17,7 @@ function SelectServidor({ label, value, onChange, placeholder, options }: Select
         {options.map((option: { value: string, label: string }) => <option key={option.value}>{option.label}</option>)}
       </select>
     </div>
-  )
+  );
 }
 
 export default SelectServidor;

@@ -8,7 +8,7 @@ import { Dispatch } from "@reduxjs/toolkit";
 const iconProps = {
   size: 20,
   color: "#ffffff",
-}
+};
 
 function OpenExtraInputsButton({ children }: { children: string }) {
   const dispatch: Dispatch = useDispatch();

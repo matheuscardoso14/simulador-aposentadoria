@@ -8,7 +8,7 @@ const store = configureStore({
     extraInputsOpen: extraInputsOpenSlice,
     servidorData: servidorDataSlice,
   }
-})
+});
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

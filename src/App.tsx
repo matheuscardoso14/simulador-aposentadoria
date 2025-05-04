@@ -1,6 +1,6 @@
-import styles from "./App.module.scss"
-import FormServidor from "./components/FormServidor"
-import Title from "./components/Title"
+import styles from "./App.module.scss";
+import FormServidor from "./components/FormServidor";
+import Title from "./components/Title";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <FormServidor />
       </section>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

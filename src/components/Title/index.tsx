@@ -13,7 +13,7 @@ function Title({ type, children }: TitleProps) {
     <Heading className={styles.title}>
       {children}
     </Heading>
-  )
+  );
 }
 
 export default Title;

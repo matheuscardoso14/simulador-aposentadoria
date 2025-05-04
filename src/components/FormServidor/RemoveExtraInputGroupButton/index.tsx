@@ -6,7 +6,7 @@ import { removeOrgaoAdicional } from "../../../store/reducers/servidorDataSlice"
 const iconProps = {
   size: 16,
   color: "#ffffff",
-}
+};
 
 function RemoveExtraInputGroupButton({ children, inputId }: { children: string, inputId: string }) {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ function RemoveExtraInputGroupButton({ children, inputId }: { children: string, 
       {children}
       <FaTrash {...iconProps} />
     </Button>
-  )
+  );
 }
 
 export default RemoveExtraInputGroupButton;

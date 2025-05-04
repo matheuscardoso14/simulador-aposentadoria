@@ -8,7 +8,7 @@ import { generateId } from "../../../utils";
 const iconProps = {
   size: 24,
   color: "#ffffff",
-}
+};
 
 function AddExtraInputGroupButton({ children }: { children: string }) {
   const dispatch: Dispatch = useDispatch();
@@ -18,7 +18,7 @@ function AddExtraInputGroupButton({ children }: { children: string }) {
       <span>{children}</span>
       <IoIosAdd {...iconProps} />
     </Button>
-  )
+  );
 }
 
 export default AddExtraInputGroupButton;

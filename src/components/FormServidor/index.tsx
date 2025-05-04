@@ -12,7 +12,7 @@ import Button from "../Button";
 const generos: Array<{ value: string, label: string }> = [
   { value: "masculino", label: "Masculino" },
   { value: "feminino", label: "Feminino" },
-]
+];
 
 function FormServidor() {
   const dispatch = useDispatch();
@@ -20,16 +20,16 @@ function FormServidor() {
   function handlePropertyChange(property: string) {
     return (value: string) => {
       dispatch(setProperty({ property, value }));
-    }
+    };
   }
 
   function handleOrgaoAdicionalChange(index: number, property: "nome" | "tempo_contribuicao") {
     return (value: string) => {
       dispatch(setOrgaoAdicional({ index, property, value }));
-    }
+    };
   }
 
-  const nomeServidor: string = useSelector((state: RootState): string => state.servidorData.nome)
+  const nomeServidor: string = useSelector((state: RootState): string => state.servidorData.nome);
   const dataNascimento: string = useSelector((state: RootState): string => state.servidorData.data_nascimento);
   const genero: string = useSelector((state: RootState): string => state.servidorData.genero);
   const cargoOcupado: string = useSelector((state: RootState): string => state.servidorData.cargo_ocupado);
@@ -64,7 +64,7 @@ function FormServidor() {
         <Button type="submit" disabled={disabled}>Realizar cálculo</Button>
       </form>
     </div>
-  )
+  );
 }
 
 export default FormServidor;

@@ -16,7 +16,7 @@ function InputServidor({ label, value, onChange, placeholder, type, required }: 
       {label && <label>{label}</label>}
       <input value={value} onChange={(event) => onChange(event.target.value)} type={type} placeholder={placeholder} required={required} />
     </div>
-  )
+  );
 }
 
 export default InputServidor;
