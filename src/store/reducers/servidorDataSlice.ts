@@ -2,10 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import { generateId } from "../../utils";
 
 
-export interface OrgaosAdicionais {
+export interface OrgaoAdicional {
   id: string;
-  nome: string;
-  tempo_contribuicao: string;
+  data_admissao: string;
+  data_demissao: string;
 }
 
 interface ServidorDataPayload {
@@ -14,7 +14,8 @@ interface ServidorDataPayload {
   genero: string;
   cargo_ocupado: string;
   data_admissao: string;
-  orgaos_adicionais: OrgaosAdicionais[];
+  tempo_contribuicao: number | null;
+  orgaos_adicionais: OrgaoAdicional[];
 }
 
 const initialState: ServidorDataPayload = {
@@ -23,12 +24,12 @@ const initialState: ServidorDataPayload = {
   genero: "",
   cargo_ocupado: "",
   data_admissao: "",
-  tempo_contribuicao: 0,
+  tempo_contribuicao: null,
   orgaos_adicionais: [
     {
       id: generateId(),
-      nome: "",
-      tempo_contribuicao: "",
+      data_admissao: "",
+      data_demissao: "",
     }
   ],
 } as ServidorDataPayload;
@@ -47,7 +48,7 @@ const servidorDataSlice = createSlice({
           state.data_nascimento = value;
           break;
         case "genero":
-          state.genero = value;
+          state.genero = value.toLowerCase();
           break;
         case "cargo_ocupado":
           state.cargo_ocupado = value;
@@ -61,26 +62,29 @@ const servidorDataSlice = createSlice({
       const id = payload;
       state.orgaos_adicionais.push({
         id,
-        nome: "",
-        tempo_contribuicao: "",
+        data_admissao: "",
+        data_demissao: "",
       });
     },
-    setOrgaoAdicional: (state, { payload }: { payload: { index: number, property: "nome" | "tempo_contribuicao", value: string } }) => {
+    setOrgaoAdicional: (state, { payload }: { payload: { index: number, property: "data_admissao" | "data_demissao", value: string } }) => {
       const { index, property, value } = payload;
-      if (property === "nome") {
-        state.orgaos_adicionais[index].nome = value;
-      } else if (property === "tempo_contribuicao") {
-        state.orgaos_adicionais[index].tempo_contribuicao = value;
+      if (property === "data_admissao") {
+        state.orgaos_adicionais[index].data_admissao = value;
+      } else if (property === "data_demissao") {
+        state.orgaos_adicionais[index].data_demissao = value;
       }
     },
     removeOrgaoAdicional: (state, { payload }: { payload: string }) => {
       const id = payload;
       state.orgaos_adicionais = state.orgaos_adicionais.filter((orgao) => orgao.id !== id);
     },
+    setTempoContribuicao: (state, { payload }: { payload: number }) => {
+      state.tempo_contribuicao = payload;
+    },
     clearServidorData: () => initialState,
   }
 });
 
-export const { setProperty, addOrgaoAdicional, setOrgaoAdicional, removeOrgaoAdicional, clearServidorData } = servidorDataSlice.actions;
+export const { setProperty, addOrgaoAdicional, setOrgaoAdicional, removeOrgaoAdicional, setTempoContribuicao, clearServidorData } = servidorDataSlice.actions;
 
 export default servidorDataSlice.reducer;
