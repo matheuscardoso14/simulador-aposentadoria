@@ -5,11 +5,11 @@ export function getPrimeiraAdmissao(state: RootState): Date {
   const orgaosAdicionais: OrgaoAdicional[] = state.servidorData.orgaos_adicionais;
 
   if (orgaosAdicionais.length > 1) {
-    return new Date(orgaosAdicionais
+    return new Date([...orgaosAdicionais]
       .sort((a, b) => new Date(a.data_admissao).getTime() - new Date(b.data_admissao).getTime())[0].data_admissao);
   }
   else if (orgaosAdicionais.length === 1 && orgaosAdicionais[0].data_admissao) {
-    return new Date(orgaosAdicionais[0].data_admissao);
+    return new Date([...orgaosAdicionais][0].data_admissao);
   }
   else {
     return new Date(state.servidorData.data_admissao);

@@ -1,0 +1,40 @@
+@use "../../variables" as *;
+
+.result-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.2rem;
+  margin: 0 auto;
+  margin-top: 3rem;
+  padding-bottom: 3rem;
+  width: 80%;
+  font-family: $font-family;
+  color: $white;
+  .text {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 32rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+    border: 10px solid $white;
+    border-radius: 10px;
+    background-color: $blue-1;
+    &__date {
+      font-weight: 700;
+      font-size: 4.5rem;
+    }
+    &__text {
+      font-weight: 500;
+      font-size: 1rem;
+    }
+  }
+}

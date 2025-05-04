@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { generateId } from "../../utils";
+import { generateId, getFromLocalStorage } from "../../utils";
 
 
 export interface OrgaoAdicional {
@@ -36,7 +36,7 @@ const initialState: ServidorData = {
 
 const servidorDataSlice = createSlice({
   name: "servidorData",
-  initialState,
+  initialState: getFromLocalStorage("servidorData") || initialState,
   reducers: {
     setProperty: (state: ServidorData, { payload }: { payload: { property: string, value: string } }) => {
       const { property, value } = payload;

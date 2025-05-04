@@ -5,5 +5,17 @@ export function generateId() {
 }
 
 export function capitalizeFirstLetter(string: string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+  return string
+  .split(" ")
+  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+  .join(" ");
+}
+
+export function saveToLocalStorage(key: string, value: any) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+export function getFromLocalStorage(key: string) {
+  const value = localStorage.getItem(key);
+  return value ? JSON.parse(value) : null;
 }

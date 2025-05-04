@@ -45,7 +45,6 @@ function FormServidor() {
     event.preventDefault();
     dispatch(calculateTempoContribuicao());
     dispatch(makeRetirementDateCalculation());
-    dispatch(clearServidorData());
   }
 
   return (

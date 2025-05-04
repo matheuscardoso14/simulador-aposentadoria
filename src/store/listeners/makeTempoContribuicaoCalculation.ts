@@ -2,6 +2,7 @@ import { createAction, createListenerMiddleware } from "@reduxjs/toolkit";
 import { OrgaoAdicional, setTempoContribuicao } from "../reducers/servidorDataSlice";
 import { RootState } from "..";
 import { calculateTempoContribuicaoAdicional, calculateTempoContribuicaoPrincipal } from "./helpers/tempoContribuicaoCalculations";
+import { saveToLocalStorage } from "../../utils";
 
 export const calculateTempoContribuicao = createAction("servidorData/calculateTempoContribuicao");
 
@@ -21,5 +22,7 @@ listener.startListening({
 
     const totalTempoContribuicao: Date = new Date(tempoContribuicaoPrincipal.getTime() + tempoContribuicaoAdicional.getTime());
     dispatch(setTempoContribuicao(totalTempoContribuicao.getTime()));
+
+    saveToLocalStorage("servidorData", state.servidorData);
   }
 });

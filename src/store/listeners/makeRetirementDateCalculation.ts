@@ -2,6 +2,7 @@ import { createAction, createListenerMiddleware } from "@reduxjs/toolkit";
 import { setRetirementDate } from "../reducers/retirementDate";
 import { calculateDataAposentadoria, getIdadeMinima, getPrimeiraAdmissao, getTempoContribuicaoMinimo } from "./helpers/retirementDateCalculations";
 import { RootState } from "..";
+import { saveToLocalStorage } from "../../utils";
 
 export const makeRetirementDateCalculation = createAction("servidorData/makeRetirementDateCalculation");
 
@@ -20,7 +21,8 @@ listener.startListening({
     const tempoContribuicaoMinimo: Date = getTempoContribuicaoMinimo(primeiraAdmissao, genero);
       
     const dataAposentadoria: string = calculateDataAposentadoria(idadeMinima, tempoContribuicaoMinimo).toISOString();
-    console.log("Data de aposentadoria:", dataAposentadoria);
     dispatch(setRetirementDate(dataAposentadoria));
+
+    saveToLocalStorage("retirementDate", dataAposentadoria);
   }
 });
