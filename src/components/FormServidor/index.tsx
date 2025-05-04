@@ -11,11 +11,9 @@ import Button from "../Button";
 import { calculateTempoContribuicao } from "../../store/listeners/makeTempoContribuicaoCalculation";
 import { FormEvent } from "react";
 import { makeRetirementDateCalculation } from "../../store/listeners/makeRetirementDateCalculation";
+import { capitalizeFirstLetter } from "../../utils";
 
-const generos: Array<{ value: string, label: string }> = [
-  { value: "masculino", label: "Masculino" },
-  { value: "feminino", label: "Feminino" },
-];
+const generos: string[] = ["masculino", "feminino"];
 
 function FormServidor() {
   const dispatch = useDispatch();
@@ -26,7 +24,6 @@ function FormServidor() {
   const cargoOcupado: string = useSelector((state: RootState): string => state.servidorData.cargo_ocupado);
   const dataAdmissao: string = useSelector((state: RootState): string => state.servidorData.data_admissao);
   const orgaosAdicionais: OrgaoAdicional[] = useSelector((state: RootState): OrgaoAdicional[] => state.servidorData.orgaos_adicionais);
-  const tempoContribuicao: number | null = useSelector((state: RootState): number | null => state.servidorData.tempo_contribuicao);
   
   const extraInputsOpen: boolean = useSelector((state: RootState): boolean => state.extraInputsOpen);
   const disabled: boolean = (nomeServidor === "" || dataNascimento === "" || genero === "" || cargoOcupado === "" || dataAdmissao === "");
@@ -46,19 +43,9 @@ function FormServidor() {
   
   function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    dispatch(calculateTempoContribuicao({
-      data_admissao_principal: dataAdmissao,
-      orgaos_adicionais: orgaosAdicionais,
-    }));
-
-    if (tempoContribuicao !== null) {
-      dispatch(makeRetirementDateCalculation({
-        data_nascimento: dataNascimento,
-        data_admissao: dataAdmissao,
-        genero 
-      }));
-      dispatch(clearServidorData());
-    }
+    dispatch(calculateTempoContribuicao());
+    dispatch(makeRetirementDateCalculation());
+    dispatch(clearServidorData());
   }
 
   return (
@@ -67,7 +54,7 @@ function FormServidor() {
       <form onSubmit={handleFormSubmit}>
         <InputServidor label="Nome do servidor" value={nomeServidor} onChange={handlePropertyChange("nome")} />
         <InputServidor label="Data de nascimento" value={dataNascimento} type="date" onChange={handlePropertyChange("data_nascimento")} />
-        <SelectServidor label="Gênero" options={generos} value={genero} placeholder="Selecione seu gênero" onChange={handlePropertyChange("genero")} />
+        <SelectServidor label="Gênero" options={generos} value={capitalizeFirstLetter(genero)} placeholder="Selecione seu gênero" onChange={handlePropertyChange("genero")} />
         <InputServidor label="Cargo ocupado" value={cargoOcupado} onChange={handlePropertyChange("cargo_ocupado")} />
         <InputServidor label="Data de admissão" value={dataAdmissao} type="date" onChange={handlePropertyChange("data_admissao")} />
         <OpenExtraInputsButton>Outros órgãos</OpenExtraInputsButton>

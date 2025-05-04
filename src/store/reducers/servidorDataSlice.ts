@@ -8,7 +8,7 @@ export interface OrgaoAdicional {
   data_demissao: string;
 }
 
-interface ServidorDataPayload {
+interface ServidorData {
   nome: string;
   data_nascimento: string;
   genero: string;
@@ -18,7 +18,7 @@ interface ServidorDataPayload {
   orgaos_adicionais: OrgaoAdicional[];
 }
 
-const initialState: ServidorDataPayload = {
+const initialState: ServidorData = {
   nome: "",
   data_nascimento: "",
   genero: "",
@@ -32,13 +32,13 @@ const initialState: ServidorDataPayload = {
       data_demissao: "",
     }
   ],
-} as ServidorDataPayload;
+} as ServidorData;
 
 const servidorDataSlice = createSlice({
   name: "servidorData",
   initialState,
   reducers: {
-    setProperty: (state, { payload }: { payload: { property: string, value: string } }) => {
+    setProperty: (state: ServidorData, { payload }: { payload: { property: string, value: string } }) => {
       const { property, value } = payload;
       switch (property) {
         case "nome":
@@ -58,7 +58,7 @@ const servidorDataSlice = createSlice({
           break;
       }
     },
-    addOrgaoAdicional: (state, { payload }: { payload: string }) => {
+    addOrgaoAdicional: (state: ServidorData, { payload }: { payload: string }) => {
       const id = payload;
       state.orgaos_adicionais.push({
         id,
@@ -66,7 +66,7 @@ const servidorDataSlice = createSlice({
         data_demissao: "",
       });
     },
-    setOrgaoAdicional: (state, { payload }: { payload: { index: number, property: "data_admissao" | "data_demissao", value: string } }) => {
+    setOrgaoAdicional: (state: ServidorData, { payload }: { payload: { index: number, property: "data_admissao" | "data_demissao", value: string } }) => {
       const { index, property, value } = payload;
       if (property === "data_admissao") {
         state.orgaos_adicionais[index].data_admissao = value;
@@ -74,11 +74,11 @@ const servidorDataSlice = createSlice({
         state.orgaos_adicionais[index].data_demissao = value;
       }
     },
-    removeOrgaoAdicional: (state, { payload }: { payload: string }) => {
+    removeOrgaoAdicional: (state: ServidorData, { payload }: { payload: string }) => {
       const id = payload;
       state.orgaos_adicionais = state.orgaos_adicionais.filter((orgao) => orgao.id !== id);
     },
-    setTempoContribuicao: (state, { payload }: { payload: number }) => {
+    setTempoContribuicao: (state: ServidorData, { payload }: { payload: number }) => {
       state.tempo_contribuicao = payload;
     },
     clearServidorData: () => initialState,

@@ -1,29 +1,25 @@
-import { createAction, createListenerMiddleware, Dispatch } from "@reduxjs/toolkit";
+import { createAction, createListenerMiddleware } from "@reduxjs/toolkit";
 import { OrgaoAdicional, setTempoContribuicao } from "../reducers/servidorDataSlice";
+import { RootState } from "..";
+import { calculateTempoContribuicaoAdicional, calculateTempoContribuicaoPrincipal } from "./helpers/tempoContribuicaoCalculations";
 
-interface Payload {
-  data_admissao_principal: string;
-  orgaos_adicionais: OrgaoAdicional[];
-}
-
-export const calculateTempoContribuicao = createAction<Payload>("servidorData/calculateTempoContribuicao");
+export const calculateTempoContribuicao = createAction("servidorData/calculateTempoContribuicao");
 
 export const listener = createListenerMiddleware();
 
 
 listener.startListening({
   actionCreator: calculateTempoContribuicao,
-  effect: ({ payload }: { payload: Payload }, { dispatch }: { dispatch: Dispatch }) => {
-    const { data_admissao_principal, orgaos_adicionais } = payload;
-    const tempoContribuicao: number = new Date().getTime() - new Date(data_admissao_principal).getTime();
-    console.log("Tempo de contribuição principal:", tempoContribuicao);
+  effect: (_action, { dispatch, getState }) => {
+    const state: RootState = getState() as RootState;
 
-    const totalTempoContribuicaoOrgaosAdicionais: number = orgaos_adicionais
-      .reduce((acc, orgao_adicional: OrgaoAdicional) => acc + (new Date(orgao_adicional.data_demissao).getTime() - new Date(orgao_adicional.data_admissao).getTime()), 0) || 0;
-    console.log("Tempo de contribuição dos órgãos adicionais:", totalTempoContribuicaoOrgaosAdicionais);
+    const dataAdmissaoPrincipal: Date = new Date(state.servidorData.data_admissao);
+    const orgaosAdicionais: OrgaoAdicional[] = state.servidorData.orgaos_adicionais;
+    
+    const tempoContribuicaoPrincipal: Date = calculateTempoContribuicaoPrincipal(dataAdmissaoPrincipal);
+    const tempoContribuicaoAdicional: Date = calculateTempoContribuicaoAdicional(orgaosAdicionais);
 
-    const totalTempoContribuicao = new Date(tempoContribuicao + totalTempoContribuicaoOrgaosAdicionais);
-    console.log("Tempo de contribuição total:", totalTempoContribuicao.getTime());
+    const totalTempoContribuicao: Date = new Date(tempoContribuicaoPrincipal.getTime() + tempoContribuicaoAdicional.getTime());
     dispatch(setTempoContribuicao(totalTempoContribuicao.getTime()));
   }
 });

@@ -4,7 +4,7 @@ const retirementDateSlice = createSlice({
   name: "retirementDate",
   initialState: "",
   reducers: {
-    setRetirementDate: (_state, { payload }: { payload: string }) => {
+    setRetirementDate: (_state: string, { payload }: { payload: string }) => {
       return payload;
     },
   }

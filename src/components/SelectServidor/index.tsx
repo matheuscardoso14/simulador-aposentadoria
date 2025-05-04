@@ -1,3 +1,4 @@
+import { capitalizeFirstLetter } from "../../utils";
 import styles from "./SelectServidor.module.scss";
 
 interface SelectServidorProps {
@@ -5,7 +6,7 @@ interface SelectServidorProps {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
-  options: Array<{ value: string, label: string }>;
+  options: string[];
 }
 
 function SelectServidor({ label, value, onChange, placeholder, options }: SelectServidorProps) {
@@ -14,7 +15,7 @@ function SelectServidor({ label, value, onChange, placeholder, options }: Select
       {label && <label>{label}</label>}
       <select value={value !== "" ? value : placeholder} onChange={(event) => onChange(event.target.value)}>
         {placeholder && <option disabled>{placeholder}</option>}
-        {options.map((option: { value: string, label: string }) => <option key={option.value}>{option.label}</option>)}
+        {options.map((option: string) => <option key={option}>{capitalizeFirstLetter(option)}</option>)}
       </select>
     </div>
   );
