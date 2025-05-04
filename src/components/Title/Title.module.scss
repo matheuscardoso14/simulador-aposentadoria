@@ -6,4 +6,9 @@
   font-weight: 700;
   color: $white;
   text-align: center;
+  @media screen and (min-width: $mobile-sm) and (max-width: $mobile) {
+    font-size: 2rem;
+    width: 80%;
+    margin: 0 auto;
+  }
 }

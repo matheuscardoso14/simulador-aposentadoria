@@ -10,6 +10,10 @@
   margin-top: 3rem;
   padding-bottom: 3rem;
   width: 32rem;
+  @media screen and (max-width: $mobile) {
+    width: 20rem;
+    
+  }
   .text {
     font-family: $font-family;
     font-size: 1.2rem;
@@ -17,6 +21,9 @@
     text-align: center;
     line-height: 1.5rem;
     width: 100%;
+    @media screen and (max-width: $mobile) {
+      width: 90%;
+    }
   }
   form {
     display: flex;
@@ -26,6 +33,12 @@
     gap: 1rem;
     width: 32rem;
     margin: 0 auto;
+    @media screen and (max-width: $mobile) {
+      width: 85%;
+    }
+    @media screen and (max-width: $mobile-sm) {
+      width: 60%;
+    }
     /* Botão para abrir os campos extras */
     & > button {
       align-self: flex-start;
@@ -45,6 +58,11 @@
         column-gap: 3rem;
         margin-bottom: 1rem;
         width: 100%;
+        @media screen and (max-width: $mobile) {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
         /* div contendo os campos extras */
         & > div {
           grid-row: 1;
@@ -63,6 +81,9 @@
           width: 10rem;
           gap: 0.5rem;
           background-color: $red-1;
+          @media screen and (max-width: $mobile) {
+            margin-top: 0.5rem;
+          }
           &:hover {
             background-color: $red-2;
           }

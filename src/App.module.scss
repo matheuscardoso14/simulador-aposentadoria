@@ -1,7 +1,10 @@
-.App {
-  min-height: 100dvh;
-  background: linear-gradient(to right, #5193ff, #b1d2ff);
-  header {
-    padding-top: 4rem;
+html {
+  overflow-x: hidden;
+  .App {
+    min-height: 100dvh;
+    background: linear-gradient(to right, #5193ff, #b1d2ff);
+    header {
+      padding-top: 4rem;
+    }
   }
 }
