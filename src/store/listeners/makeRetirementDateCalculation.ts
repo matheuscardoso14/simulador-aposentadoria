@@ -1,5 +1,5 @@
 import { createAction, createListenerMiddleware } from "@reduxjs/toolkit";
-import { setRetirementDate } from "../reducers/retirementDate";
+import { setRetirementDate } from "../reducers/retirementDateSlice";
 import { calculateDataAposentadoria, getIdadeMinima, getPrimeiraAdmissao, getTempoContribuicaoMinimo } from "./helpers/retirementDateCalculations";
 import { RootState } from "..";
 import { saveToLocalStorage } from "../../utils";

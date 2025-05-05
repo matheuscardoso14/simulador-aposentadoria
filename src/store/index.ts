@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import extraInputsOpenSlice from "./reducers/extraInputsOpenSlice.js";
 import servidorDataSlice from "./reducers/servidorDataSlice.js";
-import retirementDateSlice from "./reducers/retirementDate.js";
+import retirementDateSlice from "./reducers/retirementDateSlice.js";
 import listeners from "./listeners/index.js";
 
 

@@ -4,7 +4,7 @@ import { RootState } from "../../store";
 import { capitalizeFirstLetter } from "../../utils";
 import Button from "../Button";
 import { clearServidorData } from "../../store/reducers/servidorDataSlice";
-import { clearRetirementDate } from "../../store/reducers/retirementDate";
+import { clearRetirementDate } from "../../store/reducers/retirementDateSlice";
 
 function Result() {
   const dispatch = useDispatch();

@@ -18,7 +18,7 @@ interface ServidorData {
   orgaos_adicionais: OrgaoAdicional[];
 }
 
-const initialState: ServidorData = {
+export const initialState: ServidorData = {
   nome: "",
   data_nascimento: "",
   genero: "",
