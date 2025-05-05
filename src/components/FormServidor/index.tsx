@@ -49,7 +49,7 @@ function FormServidor() {
 
   return (
     <div className={styles["form-container"]}>
-      <p className={styles.text}>Olá, servidor! Preencha os campos abaixo para calcularmos sua data de aposentadoria.</p>
+      <p className={styles.text}>Olá, servidor(a)! Preencha os campos abaixo para calcularmos sua data de aposentadoria.</p>
       <form onSubmit={handleFormSubmit}>
         <InputServidor label="Nome do servidor" value={nomeServidor} onChange={handlePropertyChange("nome")} />
         <InputServidor label="Data de nascimento" value={dataNascimento} type="date" onChange={handlePropertyChange("data_nascimento")} />
