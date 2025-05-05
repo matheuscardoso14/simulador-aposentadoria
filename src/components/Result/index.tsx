@@ -5,6 +5,7 @@ import { capitalizeFirstLetter } from "../../utils";
 import Button from "../Button";
 import { clearServidorData } from "../../store/reducers/servidorDataSlice";
 import { clearRetirementDate } from "../../store/reducers/retirementDate";
+import { setExtraInputsOpen } from "../../store/reducers/extraInputsOpenSlice";
 
 function Result() {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ function Result() {
   function handleClick() {
     dispatch(clearServidorData());
     dispatch(clearRetirementDate());
+    dispatch(setExtraInputsOpen(false));
     localStorage.clear();
   }
 
