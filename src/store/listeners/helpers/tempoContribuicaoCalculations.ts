@@ -1,7 +1,7 @@
 import { OrgaoAdicional } from "../../reducers/servidorDataSlice";
 
 export function calculateTempoContribuicaoPrincipal(dataAdmissaoPrincipal: Date): Date {
-  const currentDate: Date = new Date();
+  const currentDate: Date = new Date(new Date().setHours(0, 0, 0, 0));
   const tempoContribuicao: Date = new Date(currentDate.getTime() - dataAdmissaoPrincipal.getTime());
   return tempoContribuicao;
 }
