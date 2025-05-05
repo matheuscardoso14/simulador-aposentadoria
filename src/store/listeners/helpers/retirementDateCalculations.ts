@@ -17,7 +17,7 @@ export function getPrimeiraAdmissao(state: RootState): Date {
 }
 
 export function getIdadeMinima(dataNascimento: Date, genero: string): Date {
-  const idadeMinima: Date = new Date(dataNascimento);
+  const idadeMinima: Date = dataNascimento;
 
   if (genero === "masculino") {
     idadeMinima.setFullYear(idadeMinima.getFullYear() + 60);
