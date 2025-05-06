@@ -22,7 +22,7 @@ interface ServidorData {
 }
 
 // Estado inicial
-const initialState: ServidorData = {
+export const initialState: ServidorData = {
   nome: "",
   data_nascimento: "",
   genero: "",

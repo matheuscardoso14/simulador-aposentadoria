@@ -4,7 +4,7 @@ import { RootState } from "../../store";
 import { capitalizeFirstLetter } from "../../utils";
 import Button from "../Button";
 import { clearServidorData } from "../../store/reducers/servidorDataSlice";
-import { clearRetirementDate } from "../../store/reducers/retirementDate";
+import { clearRetirementDate } from "../../store/reducers/retirementDateSlice";
 import { setExtraInputsOpen } from "../../store/reducers/extraInputsOpenSlice";
 
 function Result() {
@@ -12,7 +12,7 @@ function Result() {
 
   const nomeServidor: string = useSelector((state: RootState): string => state.servidorData.nome.trim());
   const cargoServidor: string = useSelector((state: RootState): string => state.servidorData.cargo_ocupado.trim());
-  const dataAposentadoria: Date = useSelector((state: RootState): Date => new Date(state.retirementDate));
+  const dataAposentadoria: Date = new Date(useSelector((state: RootState): string => state.retirementDate));
 
   function handleClick() {
     dispatch(clearServidorData());
