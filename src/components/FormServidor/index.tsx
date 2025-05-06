@@ -12,35 +12,40 @@ import { calculateTempoContribuicao } from "../../store/listeners/makeTempoContr
 import { FormEvent } from "react";
 import { makeRetirementDateCalculation } from "../../store/listeners/makeRetirementDateCalculation";
 import { capitalizeFirstLetter } from "../../utils";
+import Genero from "../../enums/Genero";
 
-const generos: string[] = ["masculino", "feminino"];
+const generos: string[] = Object.values(Genero);
 
 function FormServidor() {
   const dispatch = useDispatch();
 
+  // Dados do estado global (Redux)
   const nomeServidor: string = useSelector((state: RootState): string => state.servidorData.nome);
   const dataNascimento: string = useSelector((state: RootState): string => state.servidorData.data_nascimento);
   const genero: string = useSelector((state: RootState): string => state.servidorData.genero);
   const cargoOcupado: string = useSelector((state: RootState): string => state.servidorData.cargo_ocupado);
   const dataAdmissao: string = useSelector((state: RootState): string => state.servidorData.data_admissao);
   const orgaosAdicionais: OrgaoAdicional[] = useSelector((state: RootState): OrgaoAdicional[] => state.servidorData.orgaos_adicionais);
-  
   const extraInputsOpen: boolean = useSelector((state: RootState): boolean => state.extraInputsOpen);
+
+  // Verifica se o botão de cálculo deve ser desabilitado
   const disabled: boolean = (nomeServidor === "" || dataNascimento === "" || genero === "" || cargoOcupado === "" || dataAdmissao === "");
 
-  
+  // Função para lidar com mudanças em propriedades gerais do servidor
   function handlePropertyChange(property: string) {
     return (value: string) => {
       dispatch(setProperty({ property, value }));
     };
   }
-  
+
+  // Função para lidar com mudanças em propriedades de órgãos adicionais
   function handleOrgaoAdicionalChange(index: number, property: "data_admissao" | "data_demissao") {
     return (value: string) => {
       dispatch(setOrgaoAdicional({ index, property, value }));
     };
   }
-  
+
+  // Função para lidar com o envio do formulário
   function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     dispatch(calculateTempoContribuicao());
@@ -59,14 +64,14 @@ function FormServidor() {
         <OpenExtraInputsButton>Outros órgãos</OpenExtraInputsButton>
         {extraInputsOpen && (
           <div className={styles["extra-inputs__container"]}>
-              {orgaosAdicionais.map(({ id }: { id: string }, index) => (
-                <div key={id} className={styles["extra-input-group"]}>
-                  <InputServidor label="Data de admissão" value={orgaosAdicionais[index].data_admissao} type="date" onChange={handleOrgaoAdicionalChange(index, "data_admissao")} />
-                  <InputServidor label="Data de demissão" value={orgaosAdicionais[index].data_demissao} type="date" onChange={handleOrgaoAdicionalChange(index, "data_demissao")} />
-                  {index > 0 && <RemoveExtraInputGroupButton inputId={id}>Remover</RemoveExtraInputGroupButton>}
-                </div>
-              ))}
-              <AddExtraInputGroupButton>Adicionar órgão</AddExtraInputGroupButton>
+            {orgaosAdicionais.map(({ id }: { id: string }, index) => (
+              <div key={id} className={styles["extra-input-group"]}>
+                <InputServidor label="Data de admissão" value={orgaosAdicionais[index].data_admissao} type="date" onChange={handleOrgaoAdicionalChange(index, "data_admissao")} />
+                <InputServidor label="Data de demissão" value={orgaosAdicionais[index].data_demissao} type="date" onChange={handleOrgaoAdicionalChange(index, "data_demissao")} />
+                {index > 0 && <RemoveExtraInputGroupButton inputId={id}>Remover</RemoveExtraInputGroupButton>}
+              </div>
+            ))}
+            <AddExtraInputGroupButton>Adicionar órgão</AddExtraInputGroupButton>
           </div>
         )}
         <Button type="submit" disabled={disabled}>Realizar cálculo</Button>

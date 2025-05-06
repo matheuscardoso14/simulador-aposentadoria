@@ -12,6 +12,7 @@ export const listener = createListenerMiddleware();
 listener.startListening({
   actionCreator: calculateTempoContribuicao,
   effect: (_action, { dispatch, getState }) => {
+    // Obtém o estado atual da store
     const state: RootState = getState() as RootState;
 
     const dataAdmissaoPrincipal: Date = new Date(state.servidorData.data_admissao);

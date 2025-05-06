@@ -4,6 +4,7 @@ const extraInputsOpenSlice = createSlice({
   name: "extraInputsOpen",
   initialState: false,
   reducers: {
+    // Action para alterar o estado de exibição dos inputs adicionais
     setExtraInputsOpen: (_state: boolean, { payload }: { payload: boolean }) => {
       return payload;
     }
