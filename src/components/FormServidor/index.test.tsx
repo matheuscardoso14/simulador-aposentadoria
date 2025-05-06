@@ -6,6 +6,7 @@ import FormServidor from ".";
 import { setExtraInputsOpen } from "../../store/reducers/extraInputsOpenSlice";
 import { act } from "react";
 import { setProperty } from "../../store/reducers/servidorDataSlice";
+import Genero from "../../enums/Genero";
 
 beforeEach(() => {
   render(
@@ -39,7 +40,7 @@ test("deve calcular a data de aposentadoria ao submeter o formulário", () => {
   act(() => {
     dispatch(setProperty({ property: "nome", value: "João Gabriel" }));
     dispatch(setProperty({ property: "data_nascimento", value: "1990-01-01" }));
-    dispatch(setProperty({ property: "genero", value: "masculino" }));
+    dispatch(setProperty({ property: "genero", value: Genero.Masculino }));
     dispatch(setProperty({ property: "cargo_ocupado", value: "Analista" }));
     dispatch(setProperty({ property: "data_admissao", value: "2010-01-01" }));
     dispatch(setExtraInputsOpen(true));

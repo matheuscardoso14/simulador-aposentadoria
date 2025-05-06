@@ -7,6 +7,7 @@ import App from "./App";
 import { setProperty } from "./store/reducers/servidorDataSlice";
 import { setExtraInputsOpen } from "./store/reducers/extraInputsOpenSlice";
 import { act } from "react";
+import Genero from "./enums/Genero";
 
 test("deve renderizar o componente Result após o envio do formulário", () => {
   render(
@@ -19,7 +20,7 @@ test("deve renderizar o componente Result após o envio do formulário", () => {
   act(() => {
     dispatch(setProperty({ property: "nome", value: "João Gabriel" }));
     dispatch(setProperty({ property: "data_nascimento", value: "1990-01-01" }));
-    dispatch(setProperty({ property: "genero", value: "masculino" }));
+    dispatch(setProperty({ property: "genero", value: Genero.Masculino }));
     dispatch(setProperty({ property: "cargo_ocupado", value: "Analista" }));
     dispatch(setProperty({ property: "data_admissao", value: "2010-01-01" }));
     dispatch(setExtraInputsOpen(true));

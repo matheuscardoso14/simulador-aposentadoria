@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, test } from "vitest";
 import { RootState } from "../..";
 import { calculateDataAposentadoria, getIdadeMinima, getPrimeiraAdmissao, getTempoContribuicaoMinimo } from "./retirementDateCalculations";
+import Genero from "../../../enums/Genero";
 
 describe("getPrimeiraAdmissao()", () => {
   let state: RootState;
@@ -69,14 +70,14 @@ describe("getIdadeMinima()", () => {
   });
 
   test("deve retornar um objeto do tipo Date", () => {
-    const result: Date = getIdadeMinima(dataNascimento, "masculino");
+    const result: Date = getIdadeMinima(dataNascimento, Genero.Masculino);
 
     expect(result).toBeInstanceOf(Date);
   });
 
   describe("caso o gênero seja masculino", () => {
     test("deve retornar um Date com 60 anos a mais que a data de nascimento", () => {
-      const result: Date = getIdadeMinima(dataNascimento, "masculino");
+      const result: Date = getIdadeMinima(dataNascimento, Genero.Masculino);
       const expectedResult: Date = new Date("2050-01-01");
 
       expect(result).toEqual(expectedResult);
@@ -85,7 +86,7 @@ describe("getIdadeMinima()", () => {
 
   describe("caso o gênero seja feminino", () => {
     test("deve retornar um Date com 55 anos a mais que a data de nascimento", () => {
-      const result: Date = getIdadeMinima(dataNascimento, "feminino");
+      const result: Date = getIdadeMinima(dataNascimento, Genero.Feminino);
       const expectedResult: Date = new Date("2045-01-01");
 
       expect(result).toEqual(expectedResult);
@@ -100,14 +101,14 @@ describe("getTempoContribuicaoMinimo()", () => {
   });
 
   test("deve retornar um objeto do tipo Date", () => {
-    const result: Date = getTempoContribuicaoMinimo(primeiraAdmissao, "masculino");
+    const result: Date = getTempoContribuicaoMinimo(primeiraAdmissao, Genero.Masculino);
 
     expect(result).toBeInstanceOf(Date);
   });
 
   describe("caso o gênero seja masculino", () => {
     test("deve retornar um Date com 35 anos a mais que a data da primeira admissão", () => {
-      const result: Date = getTempoContribuicaoMinimo(primeiraAdmissao, "masculino");
+      const result: Date = getTempoContribuicaoMinimo(primeiraAdmissao, Genero.Masculino);
       const expectedResult: Date = new Date("2055-01-01");
 
       expect(result).toEqual(expectedResult);
@@ -116,7 +117,7 @@ describe("getTempoContribuicaoMinimo()", () => {
 
   describe("caso o gênero seja feminino", () => {
     test("deve retornar um Date com 30 anos a mais que a data da primeira admissão", () => {
-      const result: Date = getTempoContribuicaoMinimo(primeiraAdmissao, "feminino");
+      const result: Date = getTempoContribuicaoMinimo(primeiraAdmissao, Genero.Feminino);
       const expectedResult: Date = new Date("2050-01-01");
 
       expect(result).toEqual(expectedResult);
