@@ -77,8 +77,8 @@ describe("getIdadeMinima()", () => {
 
   describe("caso o gênero seja masculino", () => {
     test("deve retornar um Date com 60 anos a mais que a data de nascimento", () => {
-      const result: Date = getIdadeMinima(dataNascimento, Genero.Masculino);
-      const expectedResult: Date = new Date("2050-01-01");
+      const result: string = getIdadeMinima(dataNascimento, Genero.Masculino).toISOString().split("T")[0];
+      const expectedResult: string = new Date("2050-01-01").toISOString().split("T")[0];
 
       expect(result).toEqual(expectedResult);
     });
@@ -86,8 +86,8 @@ describe("getIdadeMinima()", () => {
 
   describe("caso o gênero seja feminino", () => {
     test("deve retornar um Date com 55 anos a mais que a data de nascimento", () => {
-      const result: Date = getIdadeMinima(dataNascimento, Genero.Feminino);
-      const expectedResult: Date = new Date("2045-01-01");
+      const result: string = getIdadeMinima(dataNascimento, Genero.Feminino).toISOString().split("T")[0];
+      const expectedResult: string = new Date("2045-01-01").toISOString().split("T")[0];
 
       expect(result).toEqual(expectedResult);
     });

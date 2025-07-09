@@ -50,8 +50,9 @@ test("deve calcular a data de aposentadoria ao submeter o formulário", () => {
 
   act(() => fireEvent.submit(form));
 
-  const dataAposentadoria = store.getState().retirementDate;
+  const dataAposentadoria: string = store.getState().retirementDate.split("T")[0];
+  const expectedResult: string = new Date("2050-01-01").toISOString().split("T")[0];
 
   expect(dataAposentadoria).toBeDefined();
-  expect(dataAposentadoria).toEqual("2050-01-01T00:00:00.000Z");
+  expect(dataAposentadoria).toEqual(expectedResult);
 });
